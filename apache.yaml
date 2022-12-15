@@ -4,11 +4,13 @@
   tasks:
   - name: Inastall nginx
     apt:
-      name: nginx
-      state: latest
+      name: "nginx"
+      state: "latest"
+  - name: Copy Files
     copy:
       src: index.html
       dest: /var/www/html
+  - name: Start service  
     service:
       name: nginx
       state: started
