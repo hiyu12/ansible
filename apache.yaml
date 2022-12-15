@@ -1,16 +1,18 @@
-- name: Nginx Install Remotely
+- name: Apache Install Remotely
   hosts: web
+  become: True
 
   tasks:
-  - name: Inastall nginx
+  - name: Inastall Apache
     apt:
-      name: "nginx"
-      state: "latest"
+      name: "apache2"
+      state: "present"
   - name: Copy Files
     copy:
       src: index.html
-      dest: /var/www/html
+      dest: /var/www/html/
   - name: Start service  
     service:
-      name: nginx
+      name: apache2
       state: started
+      enabled: True
