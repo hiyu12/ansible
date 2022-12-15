@@ -1,0 +1,14 @@
+- name: Nginx Install Remotely
+  hosts: web
+
+  tasks:
+  - name: Inastall nginx
+    apt:
+      name: nginx
+      state: latest
+    copy:
+      src: index.html
+      dest: /var/www/html
+    service:
+      name: nginx
+      state: started
